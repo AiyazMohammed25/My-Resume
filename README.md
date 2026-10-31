@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚡ Mohammad Aiyaz Makandar — Developer Portfolio
 
-## Getting Started
+A modern, high-performance Full-Stack Developer portfolio built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS**. Designed with a sleek dark-mode cyber aesthetic to showcase my production-ready web applications, technical skills, and academic background.
 
-First, run the development server:
+🔗 **Live Portfolio:** [Add Your Vercel Link Here]
+
+---
+
+## ✨ Key Features
+
+- **Interactive Terminal Hero:** Dynamic typing animation introducing my core stack.
+- **Live Project Showcase:** Features direct links to live Vercel deployments (including dual Customer & Admin interfaces) and GitHub repositories.
+- **Categorized Technical Arsenal:** Clean badge layout highlighting Frontend, Backend, Database, and Developer Tools.
+- **One-Click Resume Download:** Instant PDF download of my latest resume directly from the navbar and education section.
+- **Responsive & Fast:** Mobile-first layout with smooth anchor scrolling and zero external brand-icon bloat.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript / JavaScript (ES6+)
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React & Custom SVGs
+- **Deployment:** Vercel
+
+---
+
+## 🚀 Featured Projects Included
+
+1. **AI Assistant Platform**
+   - *Tech:* Next.js, React, MongoDB, Node.js, Tailwind CSS, Groq API
+   - *Live Demo:* [ai-assistant-mu-tawny.vercel.app](https://ai-assistant-mu-tawny.vercel.app/)
+   - *Source:* [GitHub Repo](https://github.com/AiyazMohammed25/ai-assistant)
+
+2. **QR-Menu & Order System**
+   - *Tech:* Next.js, React, MongoDB, Express.js, Node.js, Tailwind CSS
+   - *Customer UI:* [qr-menu-seven-rho.vercel.app](https://qr-menu-seven-rho.vercel.app/)
+   - *Admin Panel:* [qr-menu-seven-rho.vercel.app/admin](https://qr-menu-seven-rho.vercel.app/admin)
+   - *Source:* [GitHub Repo](https://github.com/AiyazMohammed25/QR-Menu)
+
+3. **Premium Cafe Template**
+   - *Tech:* Next.js, React, MongoDB, Tailwind CSS
+   - *Live Demo:* [premium-cafe-template-ashen.vercel.app](https://premium-cafe-template-ashen.vercel.app/)
+   - *Source:* [GitHub Repo](https://github.com/AiyazMohammed25/premium-cafe-template)
+
+---
+
+## 💻 Running Locally
+
+Clone the repository and install dependencies to run this portfolio on your local machine:
 
 ```bash
+# Clone the repository
+git clone [https://github.com/AiyazMohammed25/aiyaz-portfolio.git](https://github.com/AiyazMohammed25/aiyaz-portfolio.git)
+
+# Navigate into the project directory
+cd aiyaz-portfolio
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📬 Contact & Connect
+Name: Mohammad Aiyaz Makandar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Location: Bengaluru, Karnataka
 
-## Learn More
+Email: ayazmakandar625@gmail.com
 
-To learn more about Next.js, take a look at the following resources:
+Phone: +91 9075062751
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+LinkedIn: linkedin.com/in/mohammad-aiyaz-makandar
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+GitHub: github.com/AiyazMohammed25
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Mohammad Aiyaz Makandar. All rights reserved.
