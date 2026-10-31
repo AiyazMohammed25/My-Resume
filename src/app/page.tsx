@@ -16,6 +16,8 @@ import {
   ChevronRight,
   Sparkles,
   ShieldCheck,
+  Menu,
+  X,
 } from "lucide-react";
 
 // Custom SVG Icons for GitHub & LinkedIn
@@ -52,6 +54,8 @@ const LinkedinIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 export default function Portfolio() {
   const [typedText, setTypedText] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const fullText =
     "> npx aiyaz-portfolio --init ... Ready! Loaded Next.js, React & MERN Stack.";
 
@@ -64,6 +68,13 @@ export default function Portfolio() {
     }, 45);
     return () => clearInterval(interval);
   }, []);
+
+  const navLinks = [
+    { name: "Projects", href: "#projects" },
+    { name: "Tech Stack", href: "#skills" },
+    { name: "Education", href: "#education" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   const projects = [
     {
@@ -199,82 +210,139 @@ export default function Portfolio() {
       <div className="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Top Navbar */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#07090e]/80 border-b border-slate-800/80">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-lg tracking-tight text-white">
+      {/* Top Responsive Navbar */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#07090e]/85 border-b border-slate-800/80">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+          {/* Brand Logo */}
+          <a
+            href="#"
+            className="flex items-center gap-2 font-bold text-base sm:text-lg tracking-tight text-white shrink-0"
+          >
             <span className="p-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
               <Code2 className="w-5 h-5" />
             </span>
             <span>Mohammad Aiyaz</span>
-          </div>
+          </a>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm text-slate-400">
-            <a
-              href="#projects"
-              className="hover:text-cyan-400 transition-colors"
-            >
-              Projects
-            </a>
-            <a href="#skills" className="hover:text-cyan-400 transition-colors">
-              Tech Stack
-            </a>
-            <a
-              href="#education"
-              className="hover:text-cyan-400 transition-colors"
-            >
-              Education
-            </a>
-            <a
-              href="#contact"
-              className="hover:text-cyan-400 transition-colors"
-            >
-              Contact
-            </a>
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="hover:text-cyan-400 transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
 
-          {/* Right Side Socials & Resume Download */}
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/AiyazMohammed25"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/50 transition-all"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/mohammad-aiyaz-makandar"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-            </a>
+          {/* Right Side Actions (Desktop + Mobile) */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Social Icons (Visible on sm and up, and inside mobile menu on xs) */}
+            <div className="hidden sm:flex items-center gap-2">
+              <a
+                href="https://github.com/AiyazMohammed25"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/50 transition-all"
+              >
+                <GithubIcon className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mohammad-aiyaz-makandar"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+              </a>
+            </div>
+
+            {/* Resume Button */}
             <a
               href="/Moahmmad_Aiyaz_resume.pdf"
               download="Mohammad_Aiyaz_Makandar_Resume.pdf"
-              className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs sm:text-sm transition-all shadow-lg shadow-cyan-500/20"
+              className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs sm:text-sm transition-all shadow-lg shadow-cyan-500/20"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>Resume</span>
             </a>
+
+            {/* Mobile Hamburger Button (Only visible below md screen) */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Menu"
+              className="md:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-b border-slate-800 bg-[#07090e]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-4">
+            <nav className="flex flex-col space-y-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900/80 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            {/* Social Links & Quick Contact in Mobile Drawer */}
+            <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between px-3">
+              <span className="text-xs font-mono uppercase text-slate-500">
+                Connect
+              </span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/AiyazMohammed25"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:text-white"
+                >
+                  <GithubIcon className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mohammad-aiyaz-makandar"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:text-cyan-400"
+                >
+                  <LinkedinIcon className="w-3.5 h-3.5" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 pt-12 pb-20 relative z-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-12 pb-20 relative z-10">
         {/* Hero Section */}
-        <section className="py-12 md:py-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-mono text-cyan-400 mb-6">
-            <Terminal className="w-3.5 h-3.5" />
-            <span>{typedText}</span>
-            <span className="w-2 h-4 bg-cyan-400 animate-pulse inline-block" />
+        <section className="py-10 md:py-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-[11px] sm:text-xs font-mono text-cyan-400 mb-6 max-w-full overflow-hidden">
+            <Terminal className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">{typedText}</span>
+            <span className="w-2 h-4 bg-cyan-400 animate-pulse inline-block shrink-0" />
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-3xl">
+          <h1 className="text-3xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-3xl">
             Building scalable web apps with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
               Next.js & MERN Stack.
@@ -305,8 +373,8 @@ export default function Portfolio() {
               <Mail className="w-4 h-4 text-cyan-400" />
               <span>Contact Me</span>
             </a>
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 px-3 py-2">
-              <MapPin className="w-4 h-4 text-emerald-400" />
+            <div className="flex items-center gap-1.5 text-xs text-slate-400 px-2 sm:px-3 py-2">
+              <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Bengaluru, Karnataka (Open to Roles)</span>
             </div>
           </div>
@@ -439,9 +507,9 @@ export default function Portfolio() {
 
         {/* Education & Resume Section */}
         <section id="education" className="py-16 border-t border-slate-800/60">
-          <div className="p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-cyan-950/30 border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-cyan-950/30 border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
-              <div className="p-3.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mt-1">
+              <div className="p-3.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mt-1 shrink-0">
                 <GraduationCap className="w-7 h-7" />
               </div>
               <div>
@@ -464,7 +532,7 @@ export default function Portfolio() {
             <a
               href="/Moahmmad_Aiyaz_resume.pdf"
               download="Mohammad_Aiyaz_Makandar_Resume.pdf"
-              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm transition-all shrink-0 shadow-lg shadow-cyan-500/20"
+              className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm transition-all shrink-0 shadow-lg shadow-cyan-500/20"
             >
               <Download className="w-4 h-4" />
               <span>Download Full Resume</span>
@@ -478,7 +546,7 @@ export default function Portfolio() {
         id="contact"
         className="border-t border-slate-800/80 bg-slate-950/60 pt-16 pb-12 relative z-10"
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-slate-800/80">
             <div>
               <span className="text-xs font-mono uppercase tracking-wider text-cyan-400">
@@ -500,12 +568,12 @@ export default function Portfolio() {
                 href="mailto:ayazmakandar625@gmail.com"
                 className="flex items-center gap-3.5 px-5 py-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 transition-all group"
               >
-                <div className="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-colors">
+                <div className="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-colors shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div className="text-left">
+                <div className="text-left overflow-hidden">
                   <div className="text-xs text-slate-400">Email</div>
-                  <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">
+                  <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors truncate">
                     ayazmakandar625@gmail.com
                   </div>
                 </div>
@@ -515,7 +583,7 @@ export default function Portfolio() {
                 href="tel:+919075062751"
                 className="flex items-center gap-3.5 px-5 py-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 transition-all group"
               >
-                <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
+                <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="text-left">
